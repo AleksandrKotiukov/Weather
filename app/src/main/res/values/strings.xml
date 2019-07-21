@@ -3,4 +3,7 @@
     <string name="city">Saint-Petersburg</string>
     <string name="humidity">Humidity: 70%</string>
     <string name="temperature">Temperature: 20 C</string>
+    <string name="enter_city">Введите город</string>
+    <string name="city_hint">Введите город для прогноза</string>
+    <string name="button_show_forecast">Показать прогноз</string>
 </resources>
