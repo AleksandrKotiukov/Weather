@@ -3,6 +3,8 @@ package co.evecon.weather;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ public class ForecastActivity extends AppCompatActivity {
     private int showHumidity;
     private int showWindSpeed;
     private LinearLayout weatherData;
+    private Button sendEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class ForecastActivity extends AppCompatActivity {
 
         cityName = findViewById(R.id.cityName);
         weatherData = findViewById(R.id.weatherData);
+        sendEmail = findViewById(R.id.forecastEmailButton);
 
         Intent intent = getIntent();
 
@@ -60,5 +64,17 @@ public class ForecastActivity extends AppCompatActivity {
             textView.setTextSize(15);
             weatherData.addView(textView);
         }
+
+        sendEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/html");
+                intent.putExtra(Intent.EXTRA_EMAIL, "emailaddress@emailaddress.com");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
+                startActivity(Intent.createChooser(intent, "Send Email"));
+            }
+        });
     }
 }

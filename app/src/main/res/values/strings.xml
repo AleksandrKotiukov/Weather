@@ -8,6 +8,7 @@
     <string name="enter_city">Введите город</string>
     <string name="city_hint">Введите город для прогноза</string>
     <string name="button_show_forecast">Показать прогноз</string>
+    <string name="button_send_forecast">Отправить прогноз</string>
     <string name="checkbox_show_temperature">Показать температуру</string>
     <string name="checkbox_show_pressure">Показать давление</string>
     <string name="checkbox_show_humidity">Показать влажность</string>
