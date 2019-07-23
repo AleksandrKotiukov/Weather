@@ -37,7 +37,6 @@ public class ForecastActivity extends AppCompatActivity {
         if (showTemperature == 1) {
             TextView textView = new TextView(this);
             textView.setText(getResources().getString(R.string.temperature));
-            textView.setTextSize(15);
             weatherData.addView(textView);
         }
 
@@ -45,7 +44,6 @@ public class ForecastActivity extends AppCompatActivity {
         if (showPressure == 1) {
             TextView textView = new TextView(this);
             textView.setText(getResources().getString(R.string.pressure));
-            textView.setTextSize(15);
             weatherData.addView(textView);
         }
 
@@ -53,7 +51,6 @@ public class ForecastActivity extends AppCompatActivity {
         if (showHumidity == 1) {
             TextView textView = new TextView(this);
             textView.setText(getResources().getString(R.string.humidity));
-            textView.setTextSize(15);
             weatherData.addView(textView);
         }
 
@@ -61,7 +58,6 @@ public class ForecastActivity extends AppCompatActivity {
         if (showWindSpeed == 1) {
             TextView textView = new TextView(this);
             textView.setText(getResources().getString(R.string.windSpeed));
-            textView.setTextSize(15);
             weatherData.addView(textView);
         }
 
