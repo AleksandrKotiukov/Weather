@@ -5,12 +5,12 @@
     <string name="temperature">Temperature: 20 C</string>
     <string name="pressure">Pressure: 756 mm</string>
     <string name="windSpeed">Wind speed: 25 KpH</string>
-    <string name="enter_city">Введите город</string>
-    <string name="city_hint">Введите город для прогноза</string>
-    <string name="button_show_forecast">Показать прогноз</string>
-    <string name="button_send_forecast">Отправить прогноз</string>
-    <string name="checkbox_show_temperature">Показать температуру</string>
-    <string name="checkbox_show_pressure">Показать давление</string>
-    <string name="checkbox_show_humidity">Показать влажность</string>
-    <string name="checkbox_show_wind_speed">Показать скорость ветра</string>
+    <string name="enter_city">Enter city</string>
+    <string name="city_hint">Enter city for forecast</string>
+    <string name="button_show_forecast">Show forecast</string>
+    <string name="button_send_forecast">Send forecast</string>
+    <string name="checkbox_show_temperature">Show temperature</string>
+    <string name="checkbox_show_pressure">Show pressure</string>
+    <string name="checkbox_show_humidity">Show humidity</string>
+    <string name="checkbox_show_wind_speed">Show wind speed</string>
 </resources>
