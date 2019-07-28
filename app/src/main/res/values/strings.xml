@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Weather</string>
     <string name="city">Saint-Petersburg</string>
@@ -13,4 +14,7 @@
     <string name="checkbox_show_pressure">Show pressure</string>
     <string name="checkbox_show_humidity">Show humidity</string>
     <string name="checkbox_show_wind_speed">Show wind speed</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_weather_fragment">Hello from weather fragment</string>
 </resources>
