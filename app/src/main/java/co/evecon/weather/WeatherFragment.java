@@ -1,62 +1,58 @@
 package co.evecon.weather;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class ForecastActivity extends AppCompatActivity {
+
+public class WeatherFragment extends Fragment {
+
     private TextView cityName;
-    private String sendCityName;
-    private int showTemperature;
-    private int showPressure;
-    private int showHumidity;
-    private int showWindSpeed;
     private LinearLayout weatherData;
     private Button sendEmail;
+    private MainActivity mainActivity;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forecast);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View fragmentView = inflater.inflate(R.layout.fragment_weather, container, false);
 
-        cityName = findViewById(R.id.cityName);
-        weatherData = findViewById(R.id.weatherData);
-        sendEmail = findViewById(R.id.forecastEmailButton);
+        mainActivity = (MainActivity) getActivity();
+        cityName = fragmentView.findViewById(R.id.cityName);
+        weatherData = fragmentView.findViewById(R.id.weatherData);
+        sendEmail = fragmentView.findViewById(R.id.forecastEmailButton);
 
-        Intent intent = getIntent();
+        cityName.setText(mainActivity.getEnteredCityName());
 
-        sendCityName = intent.getStringExtra("cityName");
-        cityName.setText(sendCityName);
-
-        showTemperature = intent.getIntExtra("showTemperature", 2);
-        if (showTemperature == 1) {
-            TextView textView = new TextView(this);
+        if (mainActivity.getShowTemperature()) {
+            TextView textView = new TextView(getActivity());
             textView.setText(getResources().getString(R.string.temperature));
             weatherData.addView(textView);
         }
 
-        showPressure = intent.getIntExtra("showPressure", 2);
-        if (showPressure == 1) {
-            TextView textView = new TextView(this);
+        if (mainActivity.getShowPressure()) {
+            TextView textView = new TextView(getActivity());
             textView.setText(getResources().getString(R.string.pressure));
             weatherData.addView(textView);
         }
 
-        showHumidity = intent.getIntExtra("showHumidity", 2);
-        if (showHumidity == 1) {
-            TextView textView = new TextView(this);
+        if (mainActivity.getShowHumidity()) {
+            TextView textView = new TextView(getActivity());
             textView.setText(getResources().getString(R.string.humidity));
             weatherData.addView(textView);
         }
 
-        showWindSpeed = intent.getIntExtra("showWindSpeed", 2);
-        if (showWindSpeed == 1) {
-            TextView textView = new TextView(this);
+        if (mainActivity.getShowWindSpeed()) {
+            TextView textView = new TextView(getActivity());
             textView.setText(getResources().getString(R.string.windSpeed));
             weatherData.addView(textView);
         }
@@ -72,5 +68,8 @@ public class ForecastActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(intent, "Send Email"));
             }
         });
+
+        return fragmentView;
     }
+
 }

@@ -14,4 +14,7 @@
     <string name="checkbox_show_pressure">Показать давление</string>
     <string name="checkbox_show_humidity">Показать влажность</string>
     <string name="checkbox_show_wind_speed">Показать скорость ветра</string>
+
+    <string name="hello_blank_fragment">Привет из основного фрагмента</string>
+    <string name="hello_weather_fragment">Привет из погодного фрагмента</string>
 </resources>
