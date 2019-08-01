@@ -18,7 +18,9 @@ public class WeatherFragment extends Fragment {
     private TextView cityName;
     private LinearLayout weatherData;
     private Button sendEmail;
+    private Button showTempDataButton;
     private MainActivity mainActivity;
+    private TemperatureDataFragment tempDataFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,6 +32,8 @@ public class WeatherFragment extends Fragment {
         cityName = fragmentView.findViewById(R.id.cityName);
         weatherData = fragmentView.findViewById(R.id.weatherData);
         sendEmail = fragmentView.findViewById(R.id.forecastEmailButton);
+        showTempDataButton = fragmentView.findViewById(R.id.temperatureDataButton);
+        tempDataFragment = new TemperatureDataFragment();
 
         cityName.setText(mainActivity.getEnteredCityName());
 
@@ -66,6 +70,16 @@ public class WeatherFragment extends Fragment {
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
                 intent.putExtra(Intent.EXTRA_TEXT, "I'm email body.");
                 startActivity(Intent.createChooser(intent, "Send Email"));
+            }
+        });
+
+        showTempDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, tempDataFragment)
+                        .addToBackStack("")
+                        .commit();
             }
         });
 
