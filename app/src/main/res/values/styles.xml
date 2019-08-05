@@ -9,7 +9,7 @@
     </style>
 
     <!-- Base application theme. -->
-    <style name="MyAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="MyAppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryMy</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkMy</item>
