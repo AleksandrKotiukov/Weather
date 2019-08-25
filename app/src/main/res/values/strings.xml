@@ -19,4 +19,11 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_weather_fragment">Hello from weather fragment</string>
+
+    <string name="drawer_menu_header">Application menu</string>
+    <string name="drawer_main_activity">Forecast</string>
+    <string name="drawer_about">About app</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
