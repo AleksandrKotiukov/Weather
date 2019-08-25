@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 
 public class WeatherFragment extends Fragment {
 
@@ -20,6 +23,7 @@ public class WeatherFragment extends Fragment {
     private Button showTempDataButton;
     private MainActivity mainActivity;
     private TemperatureDataFragment tempDataFragment;
+    private FloatingActionButton sendMailFAB;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,6 +36,7 @@ public class WeatherFragment extends Fragment {
         weatherData = fragmentView.findViewById(R.id.weatherData);
         sendEmail = fragmentView.findViewById(R.id.forecastEmailButton);
         showTempDataButton = fragmentView.findViewById(R.id.temperatureDataButton);
+        sendMailFAB = fragmentView.findViewById(R.id.fab);
         tempDataFragment = new TemperatureDataFragment();
 
         cityName.setText(mainActivity.getEnteredCityName());
@@ -79,6 +84,15 @@ public class WeatherFragment extends Fragment {
                         .replace(R.id.fragment_container, tempDataFragment)
                         .addToBackStack("")
                         .commit();
+            }
+        });
+
+
+        sendMailFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 

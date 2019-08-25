@@ -19,4 +19,11 @@
 
     <string name="hello_blank_fragment">Привет из основного фрагмента</string>
     <string name="hello_weather_fragment">Привет из погодного фрагмента</string>
+
+    <string name="drawer_menu_header">Меню приложения</string>
+    <string name="drawer_main_activity">Прогноз</string>
+    <string name="drawer_about">О приложении</string>
+
+    <string name="navigation_drawer_open">Открыть меню</string>
+    <string name="navigation_drawer_close">Закрыть меню</string>
 </resources>
