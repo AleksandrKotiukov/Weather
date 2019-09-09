@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="city">Saint-Petersburg</string>
+    <string name="mediumTemperature">Medium year temperature: NO DATA</string>
     <string name="humidity">Humidity: 70%</string>
     <string name="temperature">Temperature: 20 C</string>
     <string name="pressure">Pressure: 756 mm</string>
@@ -15,6 +16,7 @@
     <string name="checkbox_show_wind_speed">Show wind speed</string>
 
     <string name="button_send_forecast">Send forecast</string>
+    <string name="button_medium_year_temperature">medium year temperature</string>
     <string name="button_show_temperature_data">Show temp data</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

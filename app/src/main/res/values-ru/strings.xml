@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Погода</string>
     <string name="city">Санкт-Петербург</string>
+    <string name="mediumTemperature">Среднегодовая температура: НЕТ ДАННЫХ</string>
     <string name="humidity">Влажность: 70%</string>
     <string name="temperature">Температура: 20 C</string>
     <string name="pressure">Давление: 756 mm</string>
@@ -10,6 +11,7 @@
     <string name="city_hint">Введите город для прогноза</string>
     <string name="button_show_forecast">Показать прогноз</string>
     <string name="button_send_forecast">Отправить прогноз</string>
+    <string name="button_medium_year_temperature">Среднегодовая температура</string>
     <string name="checkbox_show_temperature">Показать температуру</string>
     <string name="checkbox_show_pressure">Показать давление</string>
     <string name="checkbox_show_humidity">Показать влажность</string>

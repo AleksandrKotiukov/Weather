@@ -18,12 +18,15 @@ import com.google.android.material.snackbar.Snackbar;
 public class WeatherFragment extends Fragment {
 
     private TextView cityName;
+    private TextView mediumYearTemperature;
     private LinearLayout weatherData;
     private Button sendEmail;
     private Button showTempDataButton;
+    private Button showMediumYearTemp;
     private MainActivity mainActivity;
     private TemperatureDataFragment tempDataFragment;
     private FloatingActionButton sendMailFAB;
+    private Requester tempRequester;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,11 +36,14 @@ public class WeatherFragment extends Fragment {
 
         mainActivity = (MainActivity) getActivity();
         cityName = fragmentView.findViewById(R.id.cityName);
+        mediumYearTemperature = fragmentView.findViewById(R.id.mediumTemp);
         weatherData = fragmentView.findViewById(R.id.weatherData);
         sendEmail = fragmentView.findViewById(R.id.forecastEmailButton);
         showTempDataButton = fragmentView.findViewById(R.id.temperatureDataButton);
+        showMediumYearTemp = fragmentView.findViewById(R.id.mediumTempDataButton);
         sendMailFAB = fragmentView.findViewById(R.id.fab);
         tempDataFragment = new TemperatureDataFragment();
+        tempRequester = new Requester(mediumYearTemperature);
 
         cityName.setText(mainActivity.getEnteredCityName());
 
@@ -84,6 +90,13 @@ public class WeatherFragment extends Fragment {
                         .replace(R.id.fragment_container, tempDataFragment)
                         .addToBackStack("")
                         .commit();
+            }
+        });
+
+        showMediumYearTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tempRequester.execute();
             }
         });
 
