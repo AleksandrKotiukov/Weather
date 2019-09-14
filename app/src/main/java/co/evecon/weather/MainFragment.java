@@ -1,10 +1,13 @@
 package co.evecon.weather;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,7 @@ public class MainFragment extends Fragment {
     private WeatherFragment weatherFragment;
     private MainActivity mainActivity;
     private TextInputEditText inputCityName;
+    private SharedPreferences sharedPreference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,24 +42,33 @@ public class MainFragment extends Fragment {
         inputCityName = fragmentView.findViewById(R.id.inputCityName);
         weatherFragment = new WeatherFragment();
         mainActivity = (MainActivity) getActivity();
+        sharedPreference = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+        if (!sharedPreference.contains("Default city")) {
+            SharedPreferences.Editor editor = sharedPreference.edit();
+            // теперь в Editor утановим значения
+            editor.putString("Default city", "Pskov");
+            editor.commit();
+        }
 
         forecastButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 enteredCityName = inputCityName.getText().toString();
+
                 if (enteredCityName.equals("")) {
-                    Toast.makeText(getActivity(), "Enter city", Toast.LENGTH_SHORT).show();
-                } else {
-                    mainActivity.setEnteredCityName(enteredCityName);
-                    mainActivity.setShowTemperature(showTemperature.isChecked());
-                    mainActivity.setShowPressure(showPressure.isChecked());
-                    mainActivity.setShowHumidity(showHumidity.isChecked());
-                    mainActivity.setShowWindSpeed(showWindSpeed.isChecked());
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, weatherFragment)
-                            .addToBackStack("")
-                            .commit();
+                    enteredCityName = sharedPreference.getString("Default city", "value");
                 }
+
+                mainActivity.setEnteredCityName(enteredCityName);
+                mainActivity.setShowTemperature(showTemperature.isChecked());
+                mainActivity.setShowPressure(showPressure.isChecked());
+                mainActivity.setShowHumidity(showHumidity.isChecked());
+                mainActivity.setShowWindSpeed(showWindSpeed.isChecked());
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, weatherFragment)
+                        .addToBackStack("")
+                        .commit();
             }
         });
 
