@@ -51,6 +51,13 @@ public class MainFragment extends Fragment {
             editor.commit();
         }
 
+        if (!sharedPreference.contains("apiKey")) {
+            SharedPreferences.Editor editor = sharedPreference.edit();
+            // теперь в Editor утановим значения
+            editor.putString("apiKey", "879c31c9ee88b8a03c74af6e7c7677ce");
+            editor.commit();
+        }
+
         forecastButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
