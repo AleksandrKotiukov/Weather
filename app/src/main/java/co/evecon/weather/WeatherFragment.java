@@ -12,13 +12,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import co.evecon.weather.Interfaces.OpenWeather;
-import co.evecon.weather.model.WeatherRequest;
+import co.evecon.weather.dataBase.WeatherNoteDataReader;
+import co.evecon.weather.dataBase.WeatherNoteDataSource;
+import co.evecon.weather.modelDB.weatherNote;
+import co.evecon.weather.modelWeatherWWW.WeatherRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,6 +47,9 @@ public class WeatherFragment extends Fragment {
     private OpenWeather openWeather;
     private SharedPreferences sharedPref;
     private View fragmentView;
+    private WeatherNoteDataSource weatherSource;
+    private WeatherNoteDataReader weatherReader;
+    private weatherNote wNote;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +59,7 @@ public class WeatherFragment extends Fragment {
 
         init();
         initRetorfit();
+        initDB();
         requestRetrofit(mainActivity.getEnteredCityName(), sharedPref.getString("apiKey", "879c31c9ee88b8a03c74af6e7c7677ce"));
 
         cityName.setText(mainActivity.getEnteredCityName());
@@ -116,6 +122,7 @@ public class WeatherFragment extends Fragment {
         pressureData = new TextView(getActivity());
         humidityData = new TextView(getActivity());
         windSpeedData = new TextView(getActivity());
+        wNote = new weatherNote();
     }
 
 
@@ -130,6 +137,12 @@ public class WeatherFragment extends Fragment {
         openWeather = retrofit.create(OpenWeather.class);
     }
 
+    private void initDB() {
+        weatherSource = new WeatherNoteDataSource(getContext());
+        weatherSource.open();
+        weatherReader = weatherSource.getNoteDataReader();
+    }
+
     private void requestRetrofit(String city, String keyApi) {
         openWeather.loadWeather(city, keyApi)
                 .enqueue(new Callback<WeatherRequest>() {
@@ -137,6 +150,10 @@ public class WeatherFragment extends Fragment {
                     public void onResponse(Call<WeatherRequest> call,
                                            Response<WeatherRequest> response) {
                         if (response.body() != null) {
+
+                            weatherSource.addNote((int) response.body().getMain().getTemp() - 273, mainActivity.getEnteredCityName());
+                            weatherReader.Refresh();
+                            weatherSource.close();
                             if (mainActivity.getShowTemperature()) {
                                 tempData.setText("Temperature: " + Float.toString(response.body().getMain().getTemp() - 273) + " C");
                                 weatherData.addView(tempData);

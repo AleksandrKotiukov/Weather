@@ -1,4 +1,4 @@
-package co.evecon.weather.model;
+package co.evecon.weather.modelWeatherWWW;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
